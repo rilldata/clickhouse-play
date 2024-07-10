@@ -1,0 +1,115 @@
+# Dashboard YAML
+# Reference documentation: https://docs.rilldata.com/reference/project-files/dashboards
+# This file was generated using AI.
+
+type: metrics_view
+title: Basic Hacker News Metrics
+table: hackernews
+timeseries: time
+dimensions:
+  - label: Type
+    column: type
+    description: ""
+  - label: By
+    column: by
+    description: ""
+  - label: Text
+    column: text
+    description: ""
+  - label: Url
+    column: url
+    description: ""
+  - label: Title
+    column: title
+    description: ""
+measures:
+  - name: average_score
+    label: Average Score
+    expression: AVG(score)
+    description: The average score of the posts.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_posts
+    label: Total Posts
+    expression: COUNT(id)
+    description: The total number of posts.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: max_score
+    label: Max Score
+    expression: MAX(score)
+    description: The highest score among the posts.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_deleted_posts
+    label: Total Deleted Posts
+    expression: COUNTIf(deleted, 1)
+    description: The total number of deleted posts.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: average_comments_per_post
+    label: Average Comments per Post
+    expression: AVG(descendants)
+    description: The average number of comments per post.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_polls
+    label: Total Polls
+    expression: COUNTIf(poll, 1)
+    description: The total number of posts that are polls.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_dead_posts
+    label: Total Dead Posts
+    expression: COUNTIf(dead, 1)
+    description: The total number of dead posts.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: average_text_length
+    label: Average Text Length
+    expression: AVG(length(text))
+    description: The average length of the text in posts.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_posts_with_url
+    label: Total Posts with URL
+    expression: COUNTIf(url != '', 1)
+    description: The total number of posts that include a URL.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: min_post_time
+    label: Earliest Post Time
+    expression: MIN(time)
+    description: The timestamp of the earliest post.
+    format_preset: humanize
+    valid_percent_of_total: false
+available_time_zones:
+  - America/Los_Angeles
+  - America/Chicago
+  - America/New_York
+  - Europe/London
+  - Europe/Paris
+  - Asia/Jerusalem
+  - Europe/Moscow
+  - Asia/Kolkata
+  - Asia/Shanghai
+  - Asia/Tokyo
+  - Australia/Sydney
+available_time_ranges:
+  - PT6H
+  - PT24H
+  - P7D
+  - P14D
+  - P4W
+  - P3M
+  - P12M
+  - rill-TD
+  - rill-WTD
+  - rill-MTD
+  - rill-QTD
+  - rill-YTD
+  - rill-PDC
+  - rill-PWC
+  - rill-PMC
+  - rill-PQC
+  - rill-PYC
